@@ -58,9 +58,24 @@ const getDatosHistoricos = async (req, res) => {
     }
 }
 
+const getAccionesPorPais = async (req, res) => {
+    try {
+        const { rows } = await pool.query("SELECT * FROM EmpresasAcciones WHERE pais = $1", [req.params.pais]);
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "Datos no encontrados" });
+        }
+
+        res.json(rows); // Devolver todas las acciones para el país especificado
+    } catch (error) {
+        console.error("Error al obtener las acciones por país:", error);
+        res.status(500).json({ message: "Fallo al consultar la base de datos para obtener las acciones por país" });
+    }
+}
+
 
 
 export const AccionesController = {
     getAcciones,
-    getDatosHistoricos,getAccion,getDatosHistorico
+    getDatosHistoricos, getAccion, getDatosHistorico, getAccionesPorPais
 }
