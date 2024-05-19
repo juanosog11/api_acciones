@@ -11,6 +11,9 @@ import pg from "pg";
 //     port: config.dbport
 // })
 
-export const pool = new pg.Pool(
-    { connectionString: "postgres://root:LC6kZ6HHQZbEkcszswesTgqf9f9oIZLD@dpg-cp4juaocmk4c73eldrtg-a.oregon-postgres.render.com/dbacciones" }
+export  const pool = new pg.Pool(
+    {
+        connectionString: "postgres://root:LC6kZ6HHQZbEkcszswesTgqf9f9oIZLD@dpg-cp4juaocmk4c73eldrtg-a.oregon-postgres.render.com/dbacciones",
+        ssl:true,
+     }
 )
