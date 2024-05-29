@@ -9,6 +9,8 @@ router.get('/acciones', AccionesController.getAcciones);
 
 router.get('/acciones/pais/:pais', AccionesController.getAccionesPorPais);
 
+router.get('/acciones/pais', AccionesController.getAccionesPorPais);
+
 router.get('/acciones/:simbolo', AccionesController.getAccion);
 
 router.get('/Datos_historicos', AccionesController.getDatosHistoricos);

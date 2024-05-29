@@ -3,17 +3,17 @@ USE  Acciones;
 CREATE DATABASE IF NOT EXISTS Acciones;
 
 CREATE TABLE EmpresasAcciones (
-    simbolo VARCHAR(10) PRIMARY KEY,
+    simbolo VARCHAR(20) PRIMARY KEY,
     nombre VARCHAR(255),
     pais VARCHAR(100),
-    precio DECIMAL(10, 2),
-    subida_bajada ENUM('subida', 'bajada')
+    precio DECIMAL(20, 2),
+    subida_bajada VARCHAR(20),
 );
 
 
 
 CREATE TABLE AccionesHistoricas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     simbolo_empresa VARCHAR(10),
     fecha DATE,
     precio DECIMAL(10, 2),

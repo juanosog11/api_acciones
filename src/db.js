@@ -13,7 +13,7 @@ import pg from "pg";
 
 export  const pool = new pg.Pool(
     {
-        connectionString: "postgres://root:LC6kZ6HHQZbEkcszswesTgqf9f9oIZLD@dpg-cp4juaocmk4c73eldrtg-a.oregon-postgres.render.com/dbacciones",
+        connectionString: "postgres://root:XUbPLF56LKm1zdA4hfqRJTwywYbCWI9F@dpg-cpbriam3e1ms739b0lr0-a.oregon-postgres.render.com/dbacciones_qyyk",
         ssl:true,
      }
 )
