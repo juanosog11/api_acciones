@@ -75,7 +75,7 @@ const getAccionesPorPais = async (req, res) => {
 
 const getPaises = async (req, res) => {
     try {
-        const { rows } = await pool.query("SELECT pais FROM EmpresasAcciones");
+        const { rows } = await pool.query("SELECT DISTINCT pais FROM EmpresasAcciones ");
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "Datos no encontrados" });
@@ -90,7 +90,7 @@ const getPaises = async (req, res) => {
 
 const getMoneda = async (req, res) => {
     try {
-        const { rows } = await pool.query("SELECT simbolo_moneda FROM EmpresasAcciones");
+        const { rows } = await pool.query("SELECT DISTINCT simbolo_moneda FROM EmpresasAcciones");
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "Datos no encontrados" });
