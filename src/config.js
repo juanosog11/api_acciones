@@ -12,6 +12,6 @@ config()
 // }
 
 export default {
-    url: process.env.DB_URL || "postgres://root:LC6kZ6HHQZbEkcszswesTgqf9f9oIZLD@dpg-cp4juaocmk4c73eldrtg-a.oregon-postgres.render.com/dbaccionespostgres://root:LC6kZ6HHQZbEkcszswesTgqf9f9oIZLD@dpg-cp4juaocmk4c73eldrtg-a/dbacciones"
+    url: process.env.DB_URL || "postgres://root:fmz3sCXGh4ZZ48to3F38U34dcIA4K8Tp@dpg-cpcbqnfjbltc73ac9v90-a.oregon-postgres.render.com/dbacciones_s6w4"
 }
 
