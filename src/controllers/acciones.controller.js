@@ -75,7 +75,22 @@ const getAccionesPorPais = async (req, res) => {
 
 const getPaises = async (req, res) => {
     try {
-        const { rows } = await pool.query("SELECT  FROM EmpresasAcciones", [req.params.pais]);
+        const { rows } = await pool.query("SELECT pais FROM EmpresasAcciones");
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "Datos no encontrados" });
+        }
+
+        res.json(rows); // Devolver todas las acciones para el país especificado
+    } catch (error) {
+        console.error("Error al obtener las acciones por país:", error);
+        res.status(500).json({ message: "Fallo al consultar la base de datos para obtener las acciones por país" });
+    }
+}
+
+const getMoneda = async (req, res) => {
+    try {
+        const { rows } = await pool.query("SELECT simbolo_moneda FROM EmpresasAcciones");
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "Datos no encontrados" });
@@ -92,5 +107,5 @@ const getPaises = async (req, res) => {
 
 export const AccionesController = {
     getAcciones,
-    getDatosHistoricos, getAccion, getDatosHistorico, getAccionesPorPais
+    getDatosHistoricos, getAccion, getDatosHistorico, getAccionesPorPais, getPaises,getMoneda
 }

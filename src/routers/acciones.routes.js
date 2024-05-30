@@ -9,7 +9,9 @@ router.get('/acciones', AccionesController.getAcciones);
 
 router.get('/acciones/pais/:pais', AccionesController.getAccionesPorPais);
 
-router.get('/acciones/pais', AccionesController.getAccionesPorPais);
+router.get('/acciones/pais', AccionesController.getPaises);
+
+router.get('/acciones/moneda', AccionesController.getMoneda);
 
 router.get('/acciones/:simbolo', AccionesController.getAccion);
 
