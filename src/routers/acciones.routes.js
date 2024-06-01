@@ -15,7 +15,7 @@ router.get('/acciones/moneda', AccionesController.getSimbolo_Moneda);
 
 router.get('/acciones/moneda_nombre', AccionesController.getMoneda_nombre);
 
-router.get('/acciones/moneda_nombre/:simbolo', AccionesController.getMoneda_nombre_simbolo);
+router.get('/acciones/monedaNombrePais/:nombrePais', AccionesController.getMoneda_nombre_simbolo);
 
 router.get('/acciones/:simbolo', AccionesController.getAccion);
 
