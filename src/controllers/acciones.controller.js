@@ -121,8 +121,8 @@ const getMoneda_nombre = async (req, res) => {
 const getMoneda_nombre_simbolo = async (req, res) => {
     try {
         const { nombrePais } = req.params;
-        const [rows] = await pool.query(
-            "SELECT DISTINCT nombre_moneda, simbolo_moneda FROM EmpresasAcciones WHERE pais = ?",
+        const rows = await pool.query(
+            "SELECT DISTINCT nombre_moneda, simbolo_moneda FROM EmpresasAcciones WHERE pais = $1",
             [nombrePais]
         );
 
@@ -130,7 +130,7 @@ const getMoneda_nombre_simbolo = async (req, res) => {
             return res.status(404).json({ message: "Datos no encontrados" });
         }
 
-        res.json(rows); // Devolver todas las acciones para el país especificado
+        res.json(rows.rows); // Devolver todas las acciones para el país especificado
     } catch (error) {
         console.error("Error al obtener las acciones por país:", error);
         res.status(500).json({ message: "Fallo al consultar la base de datos para obtener las acciones por país" });
