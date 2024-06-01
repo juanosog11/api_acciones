@@ -120,7 +120,11 @@ const getMoneda_nombre = async (req, res) => {
 
 const getMoneda_nombre_simbolo = async (req, res) => {
     try {
-        const { rows } = await pool.query("SELECT DISTINCT nombre_moneda,simbolo_moneda FROM EmpresasAcciones WHERE pais = ?", [req.params.nombrePais]);
+        const { nombrePais } = req.params;
+        const [rows] = await pool.query(
+            "SELECT DISTINCT nombre_moneda, simbolo_moneda FROM EmpresasAcciones WHERE pais = ?",
+            [nombrePais]
+        );
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "Datos no encontrados" });
