@@ -88,9 +88,39 @@ const getPaises = async (req, res) => {
     }
 }
 
-const getMoneda = async (req, res) => {
+const getSimbolo_Moneda = async (req, res) => {
     try {
         const { rows } = await pool.query("SELECT DISTINCT simbolo_moneda FROM EmpresasAcciones");
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "Datos no encontrados" });
+        }
+
+        res.json(rows); // Devolver todas las acciones para el país especificado
+    } catch (error) {
+        console.error("Error al obtener las acciones por país:", error);
+        res.status(500).json({ message: "Fallo al consultar la base de datos para obtener las acciones por país" });
+    }
+}
+
+const getMoneda_nombre = async (req, res) => {
+    try {
+        const { rows } = await pool.query("SELECT DISTINCT nombre_moneda FROM EmpresasAcciones");
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "Datos no encontrados" });
+        }
+
+        res.json(rows); // Devolver todas las acciones para el país especificado
+    } catch (error) {
+        console.error("Error al obtener las acciones por país:", error);
+        res.status(500).json({ message: "Fallo al consultar la base de datos para obtener las acciones por país" });
+    }
+}
+
+const getMoneda_nombre_simbolo = async (req, res) => {
+    try {
+        const { rows } = await pool.query("SELECT DISTINCT nombre_moneda FROM EmpresasAcciones WHERE simbolo_moneda = ?", [req.params.simbolo]);
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "Datos no encontrados" });
@@ -107,5 +137,6 @@ const getMoneda = async (req, res) => {
 
 export const AccionesController = {
     getAcciones,
-    getDatosHistoricos, getAccion, getDatosHistorico, getAccionesPorPais, getPaises,getMoneda
+    getDatosHistoricos, getAccion, getDatosHistorico, 
+    getAccionesPorPais, getPaises,getSimbolo_Moneda,getMoneda_nombre,getMoneda_nombre_simbolo
 }

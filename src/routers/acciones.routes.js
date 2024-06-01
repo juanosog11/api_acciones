@@ -11,7 +11,11 @@ router.get('/acciones/pais/:pais', AccionesController.getAccionesPorPais);
 
 router.get('/acciones/pais', AccionesController.getPaises);
 
-router.get('/acciones/moneda', AccionesController.getMoneda);
+router.get('/acciones/moneda', AccionesController.getSimbolo_Moneda);
+
+router.get('/acciones/moneda_nombre', AccionesController.getMoneda_nombre);
+
+router.get('/acciones/moneda_nombre/:simbolo', AccionesController.getMoneda_nombre_simbolo);
 
 router.get('/acciones/:simbolo', AccionesController.getAccion);
 
